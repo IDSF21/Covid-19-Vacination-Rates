@@ -7,7 +7,7 @@ from IPython.display import HTML, display
 
 
 def get_country_list():
-    return pd.read_csv("../datasets/locations.csv")["location"].to_list()
+    return pd.read_csv("locations.csv")["location"].to_list()
 
 
 def get_covid_data():
@@ -28,7 +28,7 @@ def get_covid_data():
         "people_fully_vaccinated": "People Fully Vaccinated",
     }
     return pd.read_csv(
-        "../datasets/owid-covid-data.csv",
+        "owid-covid-data.csv",
         usecols=vaccination_columns,
     ).rename(columns=column_names)
 
@@ -50,9 +50,9 @@ def get_financial_data():
         "population": "Population",
         "population_density": "Polulation Density",
     }
-    return pd.read_csv(
-        "../datasets/owid-covid-data.csv", usecols=financial_columns
-    ).rename(columns=column_names)
+    return pd.read_csv("owid-covid-data.csv", usecols=financial_columns).rename(
+        columns=column_names
+    )
 
 
 def print_complete_dataframe(dataframe):
