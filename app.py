@@ -23,6 +23,7 @@ countries_data_ = countries_data.copy()
 # st.set_page_config(layout="wide")
 
 logo = Image.open("logo.png")
+world_bank_screenshot = Image.open("world_bank.png")
 st.image(
     logo,
     width=100,
@@ -32,6 +33,9 @@ st.image(
 st.title(text.Title)
 
 st.write(text.Paragraph_1)
+st.image(
+    world_bank_screenshot,
+)
 st.info(text.Paragraph_2)
 
 st.header("Questions")
@@ -202,9 +206,9 @@ st.write(text.Conclusion)
 
 
 with st.expander("References"):
-    st.write("COVID-19 Logo obtained from https://www.un.org/en/coronavirus")
+    st.markdown(text.References, unsafe_allow_html=True)
 
-st.sidebar.markdown(text.footer, unsafe_allow_html=True)
+st.sidebar.markdown(text.Footer, unsafe_allow_html=True)
 
 # col1, col2 = st.columns([3, 1])
 

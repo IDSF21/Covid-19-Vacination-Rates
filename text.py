@@ -24,7 +24,19 @@ Conclusion = """
                 Insert Conclusion Here
             """
 
-footer = """ <style>
+References = """
+                - COVID-19 Logo obtained from https://www.un.org/en/coronavirus
+                
+                - 'Absolutely unacceptable' vaccination rates in developing countries. World Bank. (2021, August 3). 
+                    Retrieved October 19, 2021, 
+                    from https://www.worldbank.org/en/news/podcast/2021/07/30/-absolutely-unacceptable-vaccination-rates-in-developing-countries-the-development-podcast. 
+
+                - Disparities in global vaccination progress are large and growing, with low-income countries  and those in Africa lagging behind. KFF. Anderson, E. (2021, July 21). 
+                    Retrieved October 20, 2021, 
+                    from https://www.kff.org/coronavirus-covid-19/press-release/disparities-in-global-vaccination-progress-are-large-and-growing-with-low-income-countries-and-those-in-africa-lagging-behind/. 
+            """
+
+Footer = """ <style>
     .footer {
     position: fixed;
     left: 16;
