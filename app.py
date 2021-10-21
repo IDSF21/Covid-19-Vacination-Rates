@@ -12,12 +12,13 @@ from PIL import Image
 
 import utils
 import plots
-from utils import get_plot
+from utils import get_plot, get_scatter_plot
 import text
 
 # Get Dataset
 countries_data, continents_data = utils.getDataset()
 countries_data_ = countries_data.copy()
+vax_gni_data = utils.get_vax_and_gni_dataset()
 
 # Use Wide Page Forma
 # st.set_page_config(layout="wide")
@@ -68,6 +69,8 @@ show_total_vaccinations = st.sidebar.checkbox("Number of Vaccinations", True)
 show_vaccinations_rates = st.sidebar.checkbox("Vaccination Rates", True)
 show_fully_vaccinated = st.sidebar.checkbox("Full Vaccinations")
 show_one_vaccination = st.sidebar.checkbox("One Vaccination")
+show_vaccination_rates_by_income_level = st.sidebar.checkbox("Country Vaccination Rates by Income Level", True)
+show_vaccination_rates_by_population = st.sidebar.checkbox("Percentage Vaccinated by Population", True)
 
 
 if show_total_vaccinations:
@@ -196,6 +199,30 @@ if show_fully_vaccinated:
             k_countries,
             sort_by=["Total Vaccinations"],
             plot_type=plots.PLOT_TYPES.FULLY_VACCINATED,
+        ),
+        use_container_width=True,
+    )
+
+if show_vaccination_rates_by_income_level:
+    st.subheader(f"Relationship between Vaccination Rate, GNI per capita and Income Level")
+    st.altair_chart(
+        get_scatter_plot(
+            vax_gni_data,
+            "GNI",
+            "Percentage Fully Vaccinated",
+            plot_type=plots.PLOT_TYPES.SCATTER_VAX_GNI,
+        ),
+        use_container_width=True,
+    )
+
+if show_vaccination_rates_by_population:
+    st.subheader(f"Relationship between Percentage Vaccinated, Total Country Population and Income Level")
+    st.altair_chart(
+        get_scatter_plot(
+            vax_gni_data,
+            "Population",
+            "Percentage Fully Vaccinated",
+            plot_type=plots.PLOT_TYPES.SCATTER_POPULATION,
         ),
         use_container_width=True,
     )
