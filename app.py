@@ -205,6 +205,17 @@ if show_fully_vaccinated:
 
 if show_vaccination_rates_by_income_level:
     st.subheader(f"Relationship between Vaccination Rate, GNI per capita and Income Level")
+    st.markdown(
+        """
+        Here, we visualize a graph of countries' percentage of fully vaccinated population with respect to their GNI per capita.
+        We also, show the income level of each country. This income level calssification is obtained from World Bank (See Reference for source).
+
+        See see from this visualization that countries with higher GNI per capita have higher percentages of fully vaccinated population
+        and vice versa. This also shows that countries with higher income levels generally have higher vaccination percentages.
+
+        Note: The chart below is zoomable to allow for more interactive.
+        """
+    )
     st.altair_chart(
         get_scatter_plot(
             vax_gni_data,
@@ -217,6 +228,23 @@ if show_vaccination_rates_by_income_level:
 
 if show_vaccination_rates_by_population:
     st.subheader(f"Relationship between Percentage Vaccinated, Total Country Population and Income Level")
+    st.markdown(
+        """
+        The graph of Percentage Fully Vaccinated vs Population shown below prvoides insights that
+        the percentage of vaccinated population is almost independent of the population size
+        but instead more dependent on the country's access to vaccine.
+        This is seen from the outliers (China & India) with very close population sizes; 1444216102 and 1393409033 respectively.
+        Both countries have a wide gap in their (fully) vaccinated percentages with China at 70.78% and India only fully vaccinated 19.93%.
+
+        Also, we see that Portugal (classified High Income) with the  one-tenth the population of China has a higher vaccination rate
+        whilst lower income countries like Sierra Leone with way smaller population size have less than 1% vaccination rate.
+
+        Hence, we conclude that the percentage of fully vaccinated pupulation in countries is independent of countries' population size 
+        but rather dependent on their access to the vaccine, which may be measure here by the Countries' overall income level.
+
+        Note: The chart below is zoomable to allow for more interactive.
+        """
+    )
     st.altair_chart(
         get_scatter_plot(
             vax_gni_data,
