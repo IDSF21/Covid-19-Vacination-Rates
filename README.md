@@ -1,85 +1,85 @@
-Goals
+## Goals
 
-- EDA
-- Extract promising subsets of the analysis from the EDA and use the most promising interactions
-- Use streamlit to build web application
-- Have interactions that make it possible to enable exploration of either: Dataset or ML Model (use either exploration or storytelling)
-- Cut scope and explore only critical dimensions - add layers of complexity from there
-- Ensure that streamlit app is tightly focused
-- Do user tests: can people look at your app and understand what the data is saying? can they clearly see an answer to a compelling question? 
-- Complete Writeup containing A clear description of the project's goals, A rationale for our design decisions, and A clear description of the goals of the project
+The goal for this project was to identify and present the disparities between Vaccination rates across countries and continents across the world.
+
+Several sources have shown that low income and developing countries have the lowest vaccination rates.
+
+- 'Absolutely unacceptable' vaccination rates in developing countries. World Bank. (2021, August 3). 
+Retrieved October 19, 2021, from https://www.worldbank.org/en/news/podcast/2021/07/30/-absolutely-unacceptable-vaccination-rates-in-developing-countries-the-development-podcast. <p align="left">
+<img src="world_bank.png" width="100%" title="Screenshot of Concern about vaccination rates">
+</p>
+
+- Disparities in global vaccination progress are large and growing, with low-income countries  and those in Africa lagging behind. KFF. Anderson, E. (2021, July 21). 
+Retrieved October 20, 2021, 
+from https://www.kff.org/coronavirus-covid-19/press-release/disparities-in-global-vaccination-progress-are-large-and-growing-with-low-income-countries-and-those-in-africa-lagging-behind/. 
+
+To do this we first sought to answer several questions:
+1. What are the Top Countries where Vaccinations were Administered?
+2. What are the Vaccination Rates Across these Countries?
+3. What are the differences in Vaccination Rates across the Continents?
+4. Which Countries have the highest number of administered first doses?
+5. Does a Country's GDP/GNI play a role in the Vaccination rate across it's population?
+
+We performed some Exploratory Data Analysis to answer these initial questions but obtained more insights along the way. They are presented in our [Streamlit App](https://share.streamlit.io/)
 
 
+## Design Decisions
+
+### Dataset
+We started out with a dataset obtained from Kaggle, but wanted a more up-to-date source with a higher level of credibility. We discovered that Our World In Data had a regularly updated github repo which contained all the data we could possibly want. 
+
+Our vacination dataset was obtained from [Our World in Data's Github](https://github.com/owid/covid-19-data/blob/master/public/data/vaccinations/)
+
+### Visual Encodings 
+How did you choose your particular visual encodings and interaction techniques?
+
+### Interaction Techniques
+
+Initially most of our visualizations were bar graphs (not much interactivity there).
+However we added some tooltips that showed additional data about the entities like countries when the bars got hovered. 
+
+To give the user more control over what they would have liked to see, we added a multiselect dropdown widget in the sidebar to help them show similar statistics for entities of their own choosing. An example would be selecting the max number of countries to render or even the countries to compare. 
+
+This created a form of interaction for dynamic filtering and was driven by the fact that plotting over 200 bars to represent every country would have been overwhelming or just ugly.
+
+For Our scatter plots, we added functionality for Zooming and panning to help users dig deeper into the disparities between lower and upper middle income country clusters.
+
+### Alternatives we considered
+
+We considered plotting every country's statistic on a seperate graph across a grid to show the difference between one-shot vaccinations and full vaccinations.
+
+We also considered doing this with a stacked bar graph.
+
+The decision to not pursue those visualizations was easy to make once we reviewed our project's goals.
+
+We decided to stick with visualizations that showed disparities across countries -- not within them.
 
 
-The issues involved in implementing an interactive data science application in Streamlit 
+## Development Process
 
-You will build an interactive application that enables the exploration of a dataset or a machine learning model of your own choosing. 
+We started this project by performing EDA in our individual notebooks.
 
-A critical challenge will be scoping the assignment such that you can complete the time available.
-  
+Using plotting libraries (altair) similar to what is available on Streamlit
 
-Focus on designing a limited yet compelling application that enables interactive exploration along a few critical dimensions, and then layer on additional complexity.  
+### Tasks
+Once we had built up some intuition for how we wanted to present the findings from our EDA, we mostly split the tasks into:
 
-A tightly-focused, well-implemented interactive application is much preferred to a sprawling design that attempts too much!
+1. Further insights and plot formulation - the design of more creative/interactive plots (Rukayat)
+2. Modularizing the code from the notebooks into helper functions or high level APIs (Eniola)
+3. Rewriting the code in the individual EDA notebooks as one shared/merged notebook with our new APIs/util functions (Eniola)
+4. Porting the code from the merged notebook to the Streamlit App (Eniola)
+5. Writeups/elaborations on the streamlit visualizations (Rukayat)
+6. Report Writing (Eniola & Rukayat)
 
-You can use any data for this project.
+## Logistics
+### Time spent: 
+  - Eniola: ~22 Hours
+  - Rukayat: ~24 Hours
 
-Design an interactive Data Science application to explore or understand a compelling question for a dataset of your own choosing. 
-
-In order to determine what subset of the data and which interactive options are most promising, we encourage you to perform additional exploratory analysis.
-
-What aspects of the data reveal the most interesting discoveries or stories? 
-
-Do not feel obligated to try to convey everything about the data: focus on a compelling subset.
-
-Your application must include interactions that enable exploration or storytelling. 
-
-Possible techniques include panning, zooming, brushing, details-on-demand (e.g., tooltips), dynamic query filters, and selecting different measures to display. 
-
-You are free to also consider highlights, annotations, or other narrative features intended to draw attention to particular items of interest and provide additional context.
-
-Implement your application in Streamlit or Panel using python. You should load data from a static data file or public web API.
-
-Your repository should also include a write-up with the following components:
-
-A clear description of the goals of your project. 
-Describe the question that you are enabling a user to answer. 
-The question should be compelling and the solution should be focused on helping users achieve their goals. 
-
-A rationale for your design decisions. 
-How did you choose your particular visual encodings and interaction techniques? 
-What alternatives did you consider and how did you arrive at your ultimate choices?
-
-An overview of your development process. 
-Describe how the work was split among the team members. 
-Include a commentary on the development process, including answers to the following questions: 
-    Roughly how much time did you spend developing your application (in people-hours)? 
-    What aspects took the most time?
-
-### Grading Criteria
-
-    Projects that squarely meet the requirements for the assignment will receive a score of 95.  
-    Going beyond the call of duty can net additional points, for example:
-
-        advanced interaction techniques
-        novel visualization or interactive elements
-        thoughtful and elegant graphic design
-        insightful & engaging exploration experience
+### Aspects that took the most time:
+  - Exploratory Data Analysis (EDA)
     
-    Point deductions will be made when projects suffer from:
+    Finding the right questions to ask, and extracting answers from the data, dealing with NaNs, choosing visualizations; these were all issues we had to tackle as early as the EDA stage. We pretty much had to figure out the most important aspects of the project at this point.
 
-        errors or broken features
-        clearly ineffective visual encodings
-        confusing interface design or unhelpful interactions
-        lack of exploratory interaction techniques
-        incomplete or insufficient write-up
-    
-    If done as a group there will be expectations that multiple interactions will be presented (ie. twice as much work expected).
-
-- Effective Data Representations              20
-- Dataset/Model                               10
-- Interactivity                               20
-- Design                                      15
-- Creativity                                   5
-- Writeup                                     30 
+### Aspects that suprisingly took the least time:
+  - Getting up and running with streamlit; The APIs are brilliant!
