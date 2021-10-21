@@ -31,7 +31,16 @@ We started out with a dataset obtained from Kaggle, but wanted a more up-to-date
 Our vacination dataset was obtained from [Our World in Data's Github](https://github.com/owid/covid-19-data/blob/master/public/data/vaccinations/)
 
 ### Visual Encodings 
-How did you choose your particular visual encodings and interaction techniques?
+
+We mostly made use of Top-K plots and Multi-Feature scatter plots 
+
+The Top-K plots show the staggering differences among entities 
+
+- Example: vaccination rates in Europe vs Africa
+
+The Multi-Feature scatter plots show color coded & scaled clusters of entities and the relationships between several variables 
+
+- Example: Vaccination Rates vs Gross National Income - color coded by based on Income Levels
 
 ### Interaction Techniques
 
@@ -65,11 +74,12 @@ Using plotting libraries (altair) similar to what is available on Streamlit
 Once we had built up some intuition for how we wanted to present the findings from our EDA, we mostly split the tasks into:
 
 1. Further insights and plot formulation - the design of more creative/interactive plots (Rukayat)
-2. Modularizing the code from the notebooks into helper functions or high level APIs (Eniola)
-3. Rewriting the code in the individual EDA notebooks as one shared/merged notebook with our new APIs/util functions (Eniola)
-4. Porting the code from the merged notebook to the Streamlit App (Eniola)
-5. Writeups/elaborations on the streamlit visualizations (Rukayat)
-6. Report Writing (Eniola & Rukayat)
+2. Findind a second dataset for an added layer of analysis - Countries Financial Data obtained from World Bank (Rukayat)
+3. Modularizing the code from the notebooks into helper functions or high level APIs (Eniola)
+4. Rewriting the code in the individual EDA notebooks as one shared/merged notebook with our new APIs/util functions (Eniola)
+5. Porting the code from the merged notebook to the Streamlit App (Eniola)
+6. Writeups/elaborations on the streamlit visualizations (Rukayat)
+7. Report Writing (Eniola & Rukayat)
 
 ## Logistics
 ### Time spent: 
