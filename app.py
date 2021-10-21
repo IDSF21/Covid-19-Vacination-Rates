@@ -121,14 +121,27 @@ if show_vaccinations_rates:
         use_container_width=True,
     )
 
-    continents_ = utils.extract_location_list(continents_data)[:-1]
-    print(continents_)
-    continent_of_choice = st.selectbox("Filter/Select Continent", continents_)
+    st.subheader(f"Top {k_countries} Fully Vaccinated countries on the Continent")
+    continents_ = [
+        "Africa",
+        "Asia",
+        "Europe",
+        "North America",
+        "Oceania",
+        "South America",
+    ]
+    continent_of_choice = st.selectbox("Choose a Continent", continents_)
+
     new_countries = utils.get_countries_by_continent(
         countries_data, continent_of_choice
     )
-    st.subheader(
-        f"Top {k_countries} Fully Vaccinated countries in {continent_of_choice}"
+    st.markdown(
+        """ 
+            The bar chart below allows you view the Top-K 
+            countries in one continent based on the percentage of their vaccination rates.
+            
+            It's interesting to note that some countries with small populations like Pitcairn and Gibraltar have Vaccination rates equal to or higher than 100%
+        """
     )
     st.altair_chart(
         get_plot(
