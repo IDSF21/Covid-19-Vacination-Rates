@@ -17,12 +17,17 @@ import text
 
 # Get Dataset
 countries_data, continents_data = utils.getDataset()
+countries_data_ = countries_data.copy()
 
 # Use Wide Page Forma
 # st.set_page_config(layout="wide")
 
 logo = Image.open("logo.png")
-st.image(logo, width=100)
+st.image(
+    logo,
+    width=100,
+)
+
 
 st.title(text.Title)
 
@@ -44,6 +49,14 @@ st.sidebar.subheader("Country Parameters")
 COUNTRIES_SELECTED = st.sidebar.multiselect(
     "Filter/Select Countries", utils.extract_location_list(countries_data)
 )
+
+if len(COUNTRIES_SELECTED) == 0:
+    countries_data = countries_data_.copy()
+else:
+    countries_data = countries_data_[
+        countries_data_["Location"].isin(COUNTRIES_SELECTED)
+    ]
+
 k_countries = st.sidebar.slider("Number of Top countries", 5, 20, 10)
 
 st.sidebar.subheader("Render Menu")
@@ -89,7 +102,7 @@ if show_total_vaccinations:
             k_countries,
             sort_by=["Total Vaccinations"],
             plot_type=plots.PLOT_TYPES.FULLY_VACCINATED,
-            ascending=True
+            ascending=True,
         ),
         use_container_width=True,
     )
@@ -108,9 +121,15 @@ if show_vaccinations_rates:
         use_container_width=True,
     )
 
-    continent_of_choice = st.selectbox("Filter/Select Continent", utils.extract_location_list(continents_data))
-    new_countries = utils.get_countries_by_continent(countries_data, continent_of_choice)
-    st.subheader(f"Top {k_countries} Fully Vaccinated countries in {continent_of_choice}")
+    continents_ = utils.extract_location_list(continents_data)[:-1]
+    print(continents_)
+    continent_of_choice = st.selectbox("Filter/Select Continent", continents_)
+    new_countries = utils.get_countries_by_continent(
+        countries_data, continent_of_choice
+    )
+    st.subheader(
+        f"Top {k_countries} Fully Vaccinated countries in {continent_of_choice}"
+    )
     st.altair_chart(
         get_plot(
             new_countries,
@@ -145,7 +164,7 @@ if show_vaccinations_rates:
             k_countries,
             sort_by=["Percentage Fully Vaccinated"],
             plot_type=plots.PLOT_TYPES.FULLY_VACCINATED,
-            ascending=True
+            ascending=True,
         ),
         use_container_width=True,
     )
@@ -170,9 +189,9 @@ st.write(text.Conclusion)
 
 
 with st.expander("References"):
-    st.write("References")
+    st.write("COVID-19 Logo obtained from https://www.un.org/en/coronavirus")
 
-st.sidebar.markdown(text.Footer)
+st.sidebar.markdown(text.footer, unsafe_allow_html=True)
 
 # col1, col2 = st.columns([3, 1])
 

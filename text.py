@@ -1,4 +1,4 @@
-Title = "Disparities in COVID-19 Vaccination Statistics WorldWide"
+Title = "Disparities in COVID-19 Vaccination Rates WorldWide"
 Footer = """
     An Interactive Web App by 
     - Eniola Ajiboye (eajiboye) 
@@ -23,3 +23,20 @@ Questions = """
 Conclusion = """
                 Insert Conclusion Here
             """
+
+footer = """ <style>
+    .footer {
+    position: fixed;
+    left: 16;
+    bottom: 0;
+    }
+    </style>
+    <div class="footer">
+    <p>An Interactive Web App by 
+        <ul>
+            <li>Eniola Ajiboye (eajiboye)</li>
+            <li>Rukayat Sadiq (rsadiq)</li>
+        </ul>
+        &nbsp;
+    </div>
+    """
