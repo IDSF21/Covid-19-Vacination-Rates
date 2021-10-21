@@ -18,6 +18,7 @@ Questions = """
                 3. What are the Vaccination Rates Across the Continents?
                 4. Which Countries have the highest number of administered first doses?
                 5. Does a Country's GDP play a role in the Vaccination rate across it's population?
+                6. Is percentage of vaccinated dependent on population size of countries?
             """
 
 Conclusion = """
