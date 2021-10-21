@@ -17,7 +17,7 @@ Questions = """
                 2. What are the Vaccination Rates Across these Countries?
                 3. What are the Vaccination Rates Across the Continents?
                 4. Which Countries have the highest number of administered first doses?
-                5. Does a Country's GDP play a role in the Vaccination rate across it's population?
+                5. Does a Country's GDP play a role in the Vaccination rate across its population?
                 6. Is percentage of vaccinated dependent on population size of countries?
             """
 
@@ -27,7 +27,9 @@ Conclusion = """
 
 References = """
                 - COVID-19 Logo obtained from https://www.un.org/en/coronavirus
-                
+                - COVID-19 Dataset obtained from https://github.com/owid/covid-19-data/tree/master/public/data
+                - GNI Dataset obtained from https://data.worldbank.org/indicator/NY.GNP.PCAP.PP.CD
+                - GNI Threshold for Income Level classification obtained from https://blogs.worldbank.org/opendata/new-world-bank-country-classifications-income-level-2021-2022
                 - 'Absolutely unacceptable' vaccination rates in developing countries. World Bank. (2021, August 3). 
                     Retrieved October 19, 2021, 
                     from https://www.worldbank.org/en/news/podcast/2021/07/30/-absolutely-unacceptable-vaccination-rates-in-developing-countries-the-development-podcast. 
