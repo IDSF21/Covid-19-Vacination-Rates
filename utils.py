@@ -5,15 +5,25 @@ import seaborn as sns
 import altair as alt
 from IPython.display import HTML, display
 
+import plots
+
+
+def extract_location_list(dataframe):
+    return dataframe["Location"].to_list()
+
 
 def get_country_list():
-    return pd.read_csv("locations.csv")["location"].to_list()
+    column_names = {"location": "Location"}
+    return extract_location_list(
+        pd.read_csv("locations.csv").rename(columns=column_names)
+    )
 
 
 def get_covid_data():
     vaccination_columns = [
         "date",
         "location",
+        "continent",
         "population",
         "total_vaccinations",
         "people_vaccinated",
@@ -22,6 +32,7 @@ def get_covid_data():
     column_names = {
         "date": "Collection Date",
         "location": "Location",
+        "continent": "Continent",
         "population": "Population",
         "total_vaccinations": "Total Vaccinations",
         "people_vaccinated": "People Vaccinated",
@@ -77,9 +88,27 @@ def preprocess_covid_data(dataframe):
 def country_continental_split(dataframe):
     countries = get_country_list()
     countries_data = dataframe[dataframe["Location"].isin(countries)]
-    continents_data = dataframe[~dataframe["Location"].isin([*countries, "World"])]
+    # continents_data = dataframe[~dataframe["Location"].isin([*countries, "World"])]
+    continents_data = dataframe[~dataframe["Location"].isin([*countries])]
+    return countries_data, continents_data
+
+def get_countries_by_continent(dataframe, continent):
+    return dataframe[dataframe['Continent'] == continent]
+
+def sort_and_return_top_k(
+    dataframe, k=10, sort_by=["Total Vaccinations"], ascending=False
+):
+    return dataframe.sort_values(by=[*sort_by], ascending=ascending).iloc[:k]
+
+
+def getDataset():
+    covid_data = get_covid_data()
+    dataset = preprocess_covid_data(covid_data)
+    countries_data, continents_data = country_continental_split(dataset)
     return countries_data, continents_data
 
 
-def sort_and_return_top_k(dataframe, k=10, sort_by=["Total Vaccinations"]):
-    return dataframe.sort_values(by=[*sort_by], ascending=False).iloc[:k]
+def get_plot(data, x_label, y_label, k, sort_by, plot_type, ascending=False):
+    subset = sort_and_return_top_k(data, k, sort_by, ascending)
+    chart = plots.plot_bars(subset, x_label, y_label, plot_type)
+    return chart

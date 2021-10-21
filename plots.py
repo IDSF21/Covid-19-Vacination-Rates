@@ -34,9 +34,11 @@ def plot_bars(data, x_label, y_label, plot_type=PLOT_TYPES.TOTAL_VACCINATIONS):
         alt.Chart(data)
         .mark_bar()
         .encode(
-            alt.Y(y_label, sort=None), x=x_label, tooltip=tooltip_list, color=y_label
+            alt.X(x_label, sort=None),
+            alt.Y(y_label, sort=None),
+            tooltip=tooltip_list,
+            color=y_label,
         )
     )
-
-    return bars
-    
+    plot_title = f"Plot of {y_label.split(':')[0]} against {x_label.split(':')[0]}"
+    return bars.properties(title=plot_title)
