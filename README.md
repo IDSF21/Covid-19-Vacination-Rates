@@ -37,11 +37,16 @@ We mostly made use of Top-K plots and Multi-Feature scatter plots
 The Top-K plots show the staggering differences among entities 
 
 - Example: vaccination rates in Europe vs Africa
+  <p align="left">
+  <img src="Chart1.png" width="50%" title="Chart showing Top K fully vaccinated countries per continent">
+  </p>
 
 The Multi-Feature scatter plots show color coded & scaled clusters of entities and the relationships between several variables 
 
 - Example: Vaccination Rates vs Gross National Income - color coded by based on Income Levels
-
+  <p align="left">
+  <img src="Chart2.png" width="50%" title="Chart showing Vaccination Rates vs Gross National Income for all countries">
+  </p>
 ### Interaction Techniques
 
 Initially most of our visualizations were bar graphs (not much interactivity there).
@@ -51,7 +56,7 @@ To give the user more control over what they would have liked to see, we added a
 
 This created a form of interaction for dynamic filtering and was driven by the fact that plotting over 200 bars to represent every country would have been overwhelming or just ugly.
 
-For Our scatter plots, we added functionality for Zooming and panning to help users dig deeper into the disparities between lower and upper middle income country clusters.
+For our scatter plots, we added functionality for Zooming and panning to help users dig deeper into the disparities between lower and upper middle income country clusters.
 
 ### Alternatives we considered
 
