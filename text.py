@@ -1,4 +1,4 @@
-Title = "COVID-19 WorldWide Vaccination Statistics"
+Title = "Disparities in COVID-19 Vaccination Statistics WorldWide"
 Footer = """
     An Interactive Web App by 
     - Eniola Ajiboye (eajiboye) 
