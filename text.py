@@ -7,8 +7,8 @@ Footer = """
 SidebarTitle = "Inputs"
 
 Paragraph_1 = "This app provides basic key metrics which can be used to assess the vacination rate/status of countries worldwide."
-Paragraph_2 = "Covid Vacination Data was obtained from [Our World In Data](https://ourworldindata.org/covid-vaccinations)"
-Paragraph_3 = ""
+Paragraph_2 = "We also look to study the access to vaccination across different countries and continents"
+Paragraph_3 = "Covid Vacination Data was obtained from [Our World In Data](https://ourworldindata.org/covid-vaccinations)"
 Paragraph_4 = ""
 Paragraph_5 = ""
 
@@ -16,13 +16,17 @@ Questions = """
                 1. What are the Top Countries where Vaccinations were Administered?
                 2. What are the Vaccination Rates Across these Countries?
                 3. What are the Vaccination Rates Across the Continents?
-                4. Which Countries have the highest number of administered first doses?
+                4. Which Countries have the highest Fully Vaccinated Rates?
                 5. Does a Country's GDP play a role in the Vaccination rate across its population?
                 6. Is percentage of vaccinated dependent on population size of countries?
             """
 
 Conclusion = """
-                Insert Conclusion Here
+                From the analysis and visualization done, two things we can conclude on are: 
+                - the vaccination percentage rate is independent of total population size but 
+                    instead dependent on inidvidual's country's access to vaccines.
+                - vaccines are more accessible in higher income countries (based on GNI per capita) 
+                    than lower income countries.
             """
 
 References = """

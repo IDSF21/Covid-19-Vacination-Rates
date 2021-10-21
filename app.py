@@ -34,10 +34,11 @@ st.image(
 st.title(text.Title)
 
 st.write(text.Paragraph_1)
+st.write(text.Paragraph_2)
 st.image(
     world_bank_screenshot,
 )
-st.info(text.Paragraph_2)
+st.info(text.Paragraph_3)
 
 st.header("Questions")
 st.subheader(
@@ -67,14 +68,26 @@ k_countries = st.sidebar.slider("Number of Top countries", 5, 20, 10)
 st.sidebar.subheader("Render Menu")
 show_total_vaccinations = st.sidebar.checkbox("Number of Vaccinations", True)
 show_vaccinations_rates = st.sidebar.checkbox("Vaccination Rates", True)
-show_fully_vaccinated = st.sidebar.checkbox("Full Vaccinations")
-show_one_vaccination = st.sidebar.checkbox("One Vaccination")
+show_fully_vaccinated = st.sidebar.checkbox("Full Vaccinations", True)
+# show_one_vaccination = st.sidebar.checkbox("One Vaccination")
 show_vaccination_rates_by_income_level = st.sidebar.checkbox("Country Vaccination Rates by Income Level", True)
 show_vaccination_rates_by_population = st.sidebar.checkbox("Percentage Vaccinated by Population", True)
 
 
 if show_total_vaccinations:
-    st.subheader(f"Vaccinations per continent")
+    st.subheader(f"Vaccinations per Continents")
+    st.markdown(
+        """ 
+            We start by answering the top continents with the highest numbers of total vaccine doses. 
+            This includes, first dose, second does and booster shots. We find the entire world have administered an overall 
+            7+ billion vaccines (actual: 7874965730). Asia, the most populous continent administered the most vaccine doses and 
+            Africa the second most continent has administered the second least total vaccine doses. Is there a reason for this disparity? 
+            Do economic factors on the continents play a role in the total number of administered doses? We explore further to answer these.
+
+            For now, we know that the decreasing order of continents with total administered vaccine doses are:
+            Asia, Europe, North America, European Union, South America, Africa and Oceania 
+        """
+    )
     st.altair_chart(
         get_plot(
             continents_data,
@@ -88,6 +101,16 @@ if show_total_vaccinations:
     )
 
     st.subheader(f"Top {k_countries} Countries where Vaccinations were administered")
+    st.markdown(
+        """ 
+            We also, explore the data to know which countries have administered the most vaccine doses. 
+            We find in decreasing order, China, India, United States, Brazil, Japan, Indonesia, Turkey, Mexico, Germany and France 
+            have administered the most vaccine doses.
+
+            Use the slider in the side bar to increase or decrease the number of countries to see the corresponding 
+            top or bottom X countries with full vaccination rates.
+        """
+    )
     st.altair_chart(
         get_plot(
             countries_data,
@@ -101,6 +124,12 @@ if show_total_vaccinations:
     )
 
     st.subheader(f"Bottom {k_countries} Countries where Vaccinations were administered")
+    st.markdown(
+        """ 
+           We take a look at the bottom country with total administered vaccines and find the following countries/Islands at the bottom 10.
+           Anguilla, Nauru, Wallis and Futuna, Tuvalu, Saint Helena, Folkland Islands, Montseratt, Niue, Tokelau and Pitcairn.
+        """
+    )
     st.altair_chart(
         get_plot(
             countries_data,
@@ -113,9 +142,28 @@ if show_total_vaccinations:
         ),
         use_container_width=True,
     )
+st.error(
+    """
+        Is the usage of total administered doses for analysis a true reflection of our bottomline question (Study of Vaccination Access across Countries and Continents)?
 
+        We find that we need to compare the number of administered vaccines to each country/continent population to give a fair analysis.
+
+        Hence, the remainder of our analysis uses fully vaccination rate which is a percentage ration of fully vaccinated population to total population of each countries.
+    """
+)
 if show_vaccinations_rates:
-    st.subheader("Full Vaccination Rates per Continent")
+    st.subheader("Full Vaccination Rates per Continents")
+    st.markdown(
+        """ 
+            For a comparison of fully vaccination rates (fully vaccinated population to total population ratio) amongst continents.
+            First, we see that only about 35% of the world is fully vaccinated (received double doses).
+            We also notice a wide gap amongst the continets. Asia and Africa the first and second most populous continents 
+            rank bottom two on the list of fully vaccinated rated, with position 6th and 7th repsectively.
+
+            Perhaps, we can attribute this to the income levels and poverty index of the countries in these continets?
+            We explore further analysis is subsequent sections to get a clearer answer to this question.
+        """
+    )
     st.altair_chart(
         get_plot(
             continents_data,
@@ -147,7 +195,12 @@ if show_vaccinations_rates:
             The bar chart below allows you view the Top-K 
             countries in one continent based on the percentage of their vaccination rates.
             
-            It's interesting to note that some countries with small populations like Pitcairn and Gibraltar have Vaccination rates equal to or higher than 100%
+            It's interesting to note that some countries/islands with small populations like Pitcairn 
+            and Gibraltar have Vaccination rates equal to or higher than 100%. More interesting is that Pitcairn originally 
+            ranked bottom on total administered doses but is now ranked top here. 
+            The fully vaccinated percentage is therefore a better metrics to analysis and visualize with.
+
+            Select Continent from the dropdown to see countries in selected continent with top fully vaccinated rates.
         """
     )
     st.altair_chart(
@@ -191,6 +244,22 @@ if show_vaccinations_rates:
 
 if show_fully_vaccinated:
     st.subheader(f"Top {k_countries} Countries based on number of Full Vaccinations")
+    st.markdown(
+        """
+        Full vaccination rates are measured as a percentage of the ratio of fully vaccinated population to the total population.
+        We find that countries with high number of doses administered do not feature in the graph as their total population size is a lot 
+        and compared with their total populations size, they are not doing very well in vaccination rates.
+        The top 10 countries (and islands) with the highest vaccination rates are in descending order are:
+        Gibraltar, Pitcairn, Portugal, United Arab Emirates, Cayman Islands, Malta, Iceland, Singapore, Spain and Qatar
+        
+        Conversely, we also visualize the countries with the countries with the countries with the lowest fully vaccination rates.
+        The bottom 10 countries are: 
+        Tanzania, Cameroon, Guinea-Bissau, South Sudan, Haiti, Chad, Central African Republic, Liberia, Yemen, and Democratic Republic of Congo.
+
+        Use the slider in the side bar to increase or decrease the number of countries to see the corresponding 
+        top or bottom X countries with full vaccination rates.
+        """
+    )
     st.altair_chart(
         get_plot(
             countries_data,

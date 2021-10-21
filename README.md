@@ -16,9 +16,10 @@ from https://www.kff.org/coronavirus-covid-19/press-release/disparities-in-globa
 To do this we first sought to answer several questions:
 1. What are the Top Countries where Vaccinations were Administered?
 2. What are the Vaccination Rates Across these Countries?
-3. What are the differences in Vaccination Rates across the Continents?
-4. Which Countries have the highest number of administered first doses?
-5. Does a Country's GDP/GNI play a role in the Vaccination rate across it's population?
+3. What are the Vaccination Rates Across the Continents?
+4. Which Countries have the highest Fully Vaccinated Rates?
+5. Does a Country's GDP play a role in the Vaccination rate across its population?
+6. Is percentage of vaccinated dependent on population size of countries?
 
 We performed some Exploratory Data Analysis to answer these initial questions but obtained more insights along the way. They are presented in our [Streamlit App](https://share.streamlit.io/)
 
@@ -79,10 +80,10 @@ Using plotting libraries (altair) similar to what is available on Streamlit
 Once we had built up some intuition for how we wanted to present the findings from our EDA, we mostly split the tasks into:
 
 1. Further insights and plot formulation - the design of more creative/interactive plots (Rukayat)
-2. Findind a second dataset for an added layer of analysis - Countries Financial Data obtained from World Bank (Rukayat)
+2. Finding a second dataset for an added layer of analysis - Countries Financial Data obtained from World Bank (Rukayat)
 3. Modularizing the code from the notebooks into helper functions or high level APIs (Eniola)
 4. Rewriting the code in the individual EDA notebooks as one shared/merged notebook with our new APIs/util functions (Eniola)
-5. Porting the code from the merged notebook to the Streamlit App (Eniola)
+5. Porting the code from the merged notebook to the Streamlit App (Eniola & Rukayat)
 6. Writeups/elaborations on the streamlit visualizations (Rukayat)
 7. Report Writing (Eniola & Rukayat)
 
