@@ -8,6 +8,7 @@ from IPython.display import HTML, display
 import plots
 
 
+
 def extract_location_list(dataframe):
     return dataframe["Location"].to_list()
 
